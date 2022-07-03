@@ -1,0 +1,43 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+		<center>
+			<h2>My Order History Details</h2><br><br>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					
+					
+					<th>Item</th>
+					
+					<th>Quantity</th>
+					<th>Amount</th>
+				</tr>
+
+				{% for row in data['book'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					
+					<td>{{ row['product'] }}</td>
+					
+				
+					<td>{{ row['quantity'] }}</td>
+					<td>{{ row['amount'] }}</td>
+					
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

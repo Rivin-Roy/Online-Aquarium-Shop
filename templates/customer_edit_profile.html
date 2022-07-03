@@ -1,0 +1,96 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	
+		<center>
+			{% if data['cust_updates'] %}
+				<form method="post">
+		
+			<h1>Profile</h1>
+		<table class="table" style="max-height: 50px; max-width: 500px;">
+			<tr>
+				<th>First name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="fname" value="{{data['cust_updates'][0]['first_name']}}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Last name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="lname" value="{{data['cust_updates'][0]['last_name']}}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" pattern="[0-9]{10}" title="enter valid phone" required name="phone" value="{{data['cust_updates'][0]['phone']}}" class="form-control"></td>
+			</tr>
+			
+			<tr>
+				<th>House Name</th>
+				<td><input type="text" required name="hname" value="{{data['cust_updates'][0]['house']}}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" required name="place" pattern="[a-zA-Z\s]{0,50}" value="{{data['cust_updates'][0]['place']}}" title="enter valid place" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>District</th>
+				<td><input type="text" required name="district" pattern="[a-zA-Z\s]{0,50}" value="{{data['cust_updates'][0]['district']}}" title="enter valid district" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" required name="pin" pattern="[0-9]{6}" title="enter valid pincode" value="{{data['cust_updates'][0]['pincode']}}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" value="{{data['cust_updates'][0]['email']}}" required name="email" class="form-control"></td>
+			</tr>
+			
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="Edit" name="submit" value="Done" class="btn btn-danger"></td>
+			</tr>
+		</table>
+
+		
+	</form>
+	{% else %}
+			<h2>Profile</h2><br><br>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Phone</th>
+					<th>House</th>
+					<th>Place</th>
+					<th>District</th>
+					<th>Pincode</th>
+					<th>Email</th>
+				</tr>
+
+				{% for row in data['user'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['first_name'] }}</td>
+					<td>{{ row['last_name'] }}</td>
+					<td>{{ row['phone'] }}</td>
+					<td>{{ row['house'] }}</td>
+					<td>{{ row['place'] }}</td>
+					<td>{{ row['district'] }}</td>
+					<td>{{ row['pincode'] }}</td>
+					<td>{{ row['email'] }}</td>
+					<td><a href="?action=edit" class="btn btn-info">Edit</a></td>
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		
+	{% endif %}
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

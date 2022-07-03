@@ -1,0 +1,75 @@
+{% include 'admin_header.html' %}
+{% include 'temp_header.html' %}
+
+
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+
+<center>
+	<h1>PAYMENT REPORT</h1>
+	<br><br>
+	<form method="post">
+	<table class="table" style="width: 600px;color: #fff">
+		<tr>
+			<th>From date</th>
+			<td><input type="date" name="fdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<th>To date</th>
+			<td><input type="date" name="tdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" value="search" name="submit" class="btn btn-danger"></td>
+		</tr>
+	</table>
+
+		<div id="div_print" > 
+			</form>
+
+	<h1>PAYMENT LIST</h1>
+	<table class="table" style="width: 700px;color: #fff">
+		<tr>
+			<th>Sno</th>
+			<th>Customer name</th>
+			<th>Amount</th>
+			<th>Date</th>
+			
+		</tr>
+		{% for row in data['payment'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['amount'] }}</td>
+			<td>{{ row['date'] }}</td>
+			
+		</tr>
+
+		{% endfor %}
+	</table>
+	<td><a href="admin_payment_print">Report</a></td>
+	
+	</div> 
+	
+	<input type="button" value="click to print" onclick="printDiv()" class="btn btn-danger"> 
+</center>
+
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

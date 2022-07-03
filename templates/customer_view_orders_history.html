@@ -1,0 +1,47 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+		<center>
+			<h2>My Order History</h2><br><br>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					
+					
+					<th>Total</th>
+					
+					<th>Date</th>
+					<th>Status</th>
+				</tr>
+
+				{% for row in data['book'] %}
+
+				
+					<td>{{ loop.index }}</td>
+					
+					<td>{{ row['total'] }}</td>
+					
+				
+					<td>{{ row['date'] }}</td>
+					<td>{{ row['status'] }}</td>
+					<td><a href="customer_view_history_details?bid={{row['booking_id']}}" class="btn btn-success">Details</a></td>
+					{% if row['status'] !='delivered'%}
+					<td><a href="user_clear?id={{row['booking_id']}}" class="btn btn-success">Cancel</a></td>	
+				
+					{% endif %}
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

@@ -1,0 +1,62 @@
+{% include 'admin_header.html' %}
+ 
+<form method="post">
+<center>
+	<h1>ORDERS</h1>
+	<br><br>
+	<table class="table" style="width: 600px;color: #fff">
+		<tr>
+			<th>From date</th>
+			<td><input type="date" name="fdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<th>To date</th>
+			<td><input type="date" name="tdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" value="search" name="submit" class="btn btn-danger"></td>
+		</tr>
+	</table>
+
+		<div id="div_print" > 
+
+<center>
+	<h1>ORDER REPORT</h1>
+		<table class="table" style="width: 700px;color:white;font-weight: 25px;">
+			<tr>
+				<th>Sno</th>
+				<th>Customer</th>
+				<th>Total</th>
+				<th>Date</th>
+				
+			</tr>
+
+			{% for row in data['bookings'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['customer_name'] }}</td>
+				<td>{{ row['total'] }}</td>
+				<td>{{ row['date'] }}</td>
+				
+				
+			</tr>
+
+			{% endfor %}
+
+		</table>
+		<!-- <input type="button" value="click to print" onclick="printDiv()" class="btn btn-danger">  -->
+		<td><a href="admin_order_print">Report</a></td>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

@@ -1,0 +1,56 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form>
+		<center>
+			<h1>FISH</h1>
+			<table class="table" style="width: 1100px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Breed</th>
+					<!-- <th>Brand</th> -->
+					<!-- <th>Type</th> -->
+					<th>Product</th>
+					<th>Price</th>
+					<th>Photo</th>
+					<th>Description</th>
+					<!-- <th>Cost Price</th> -->
+				</tr>
+
+				{% for row in data['fish'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['breed'] }}</td>
+					<!-- <td>{{ row['brand'] }}</td> -->
+					<!-- <td>{{ row['type'] }}</td> -->
+					<td>{{ row['product'] }}</td>
+					<td>{{ row['amount'] }}</td>
+					<td><a href="/{{row['image']}}"><img width="150" height="150" src="/{{row['image']}}"></a></td>
+					<td>{{ row['description'] }}</td>
+					<!-- <td>{{ row['cost_price'] }}</td> -->
+					{% if row['quantity'] |int >0 %}
+					<td><a class="btn btn-success" href="customer_add_to_cart?id={{ row['item_id'] }}">Add to Cart</a></td>
+					{% else %}
+					<td>OUT OF STOCK</td>
+					{% endif %}
+				</tr>
+				
+				
+
+				{% endfor %}
+
+			</table>
+		</center>
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

@@ -1,0 +1,50 @@
+{% include 'admin_header.html' %}
+{% include 'temp_header.html' %}
+
+<form method="post">
+
+<center>
+	<h1>ASSIGN FISH</h1>
+		<table style="color: #fff">
+			<tr>
+				<th>Quantity</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid quantity" required name="quanti"></td>
+			</tr>
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid amount" required name="amount"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="add" name="submit"></td>
+			</tr>
+		</table>
+		<br><br>
+		<h1>ASSIGN</h1>
+		<table style="color: #fff">
+			<tr>
+				<th>Sno</th>
+				<th>Fish name</th>
+				<th>Quantity</th>
+				<th>Amount</th>
+			</tr>
+
+			{% for row in data['assign'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['fish_name'] }}</td>
+				<td>{{ row['quantity'] }}</td>
+				<td>{{ row['amount'] }}</td>
+				<td><a href="?action=delete&aid={{ row['assign_id'] }}&fid={{ data['fid'] }}&bid={{ data['bid'] }}">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+</center>
+
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

@@ -1,0 +1,59 @@
+{% include 'staff_header.html' %}
+
+<form method="post">
+	<center>
+		<h1 style="padding-top: 200px;">ADD BREEDS</h1>
+		<table class="table" style="width: 600px;color:white"> 
+			<tr>
+				<th>Subcategory</th>
+				<td><select name="subcat" class="form-control" style="width: 500px;height: 50px"><option>Select</option>
+					{% for row in data['sub'] %}
+					<option value="{{row['subcategory_id']}}">{{row['subcategory']}}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Breed</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid breed" required name="breed" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="add" name="submit" class="btn btn-danger"></td>
+			</tr> 
+		</table>
+		<br><br>
+		<h1 >BREEDS</h1>
+		<table class="table" style="width: 700px;color:white">
+			<tr>
+				<th>Sno</th>
+				<th>Subcategory</th>
+				<th>Breed</th>
+			</tr>
+
+			{% for row in data['breeds'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['subcategory'] }}</td>
+				<td>{{ row['breed'] }}</td>
+				
+				{% if row['b_status']=='active' %}
+					<td><a href="?action=inactive&bid={{ row['breed_id'] }}" class="btn btn-danger">Inactive</a></td>
+				{% elif row['b_status']=='inactive' %}
+					<td><a href="?action=active&bid={{ row['breed_id'] }}" class="btn btn-danger">Active</a></td>
+				{% endif %}	
+			</tr>
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

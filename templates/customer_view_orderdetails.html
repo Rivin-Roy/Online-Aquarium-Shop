@@ -1,0 +1,56 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form>
+		<center>
+			{% if data['odetails'] %}
+			<h2>My Cart Products</h2><br><br>
+			
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					<!-- <th>Type</th> -->
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Amount</th>
+					<th>Photo</th>
+				</tr>
+
+				{% for row in data['odetails'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<!-- <td>{{ row['item_id'] }}</td> -->
+					<td>{{ row['product'] }}</td>
+					<td>{{ row['bq'] }}</td>
+					<td>{{ row['amount'] }}</td>
+				<td><img width="80" height="50" src="/{{row['image']}}"></td>
+				<td><a class="btn btn-success" href="?action=cancel&bd_id={{row['bdetail_id']}}&bid={{row['booking_id']}}&i_id={{ row['item_id'] }}&amount={{ row['amount'] }}&ids={{data['ids']}}&q={{row['bq']}}">Cancel</a></td>
+				</tr>
+
+				{% endfor %}
+
+
+		</table>
+		{% else %}
+		<h1>Cart Is Empty</h1>
+		{% endif %}
+		{% if data['odetails'] %}
+		<h2>Your Total Amount : {{ data['odetails'][0]['total'] }}</h2>
+		<a href="user_clear?id={{ data['odetails'][0]['booking_id'] }}" class="btn btn-success">Cancel all items</a>
+		<br>
+		<a class="btn btn-success" href="?actions=makepayment&id={{ data['odetails'][0]['booking_id'] }}&ids={{data['ids']}}">Make Payment</a>
+		</center>
+
+		{% endif %}
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

@@ -1,0 +1,38 @@
+{% include 'admin_header.html' %}
+<center>
+	<h1 style="padding-top: 150px;">BREEDS</h1>
+		<table class="table" style="width: 700px;color: #fff">
+			<tr>
+				<th>Sno</th>
+				<th>Subcategory</th>
+				<th>Breed</th>
+			</tr>
+
+			{% for row in data['breed'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['subcategory'] }}</td>
+				<td>{{ row['breed'] }}</td>
+				<td><a href="admin_manage_fish?bid={{ row['breed_id'] }}" class="btn btn-info">Add Item</a></td>
+					
+			</tr>
+			{% endfor %}
+
+		</table>
+</center>
+
+
+
+
+		
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

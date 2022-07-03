@@ -1,0 +1,47 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form>
+		<center>
+			{% if not  data['val'] %}
+			
+			<h2>My Cart Orders</h2><br>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Amount</th>
+					<th>Date</th><td></td>
+				</tr>
+
+				{% for row in data['orders'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['total'] }}</td>
+					<td>{{ row['date'] }}</td>
+					
+				{% if row['status']=="pending" %}
+					<td><a class="btn btn-success" href="customer_view_orderdetails?ids={{row['booking_id']}}">View Cart & Pay</a></td>
+					
+				{% endif %}
+
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		{% else %}
+			<h2>Cart is empty</h2>
+		{% endif%}
+		</center>
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

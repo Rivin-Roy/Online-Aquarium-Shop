@@ -1,0 +1,34 @@
+{% include 'staff_header.html' %}
+
+<center>
+	<form method="post">
+		<h2>MANAGE TYPE</h2>
+		<table>
+			<tr>
+				<th>SUB CATEGORY</th>
+				<td><select name="subcat">
+					{% for row in data['subcategory'] %}
+					<option value="{{row['subcategory_id']}}">{{row['subcategory']}}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>TYPE NAME</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

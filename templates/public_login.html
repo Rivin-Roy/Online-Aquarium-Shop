@@ -1,0 +1,54 @@
+{% include 'public_header.html' %}
+
+<div class="tm-main">
+
+    <div class="tm-welcome-section" >
+      <div class="container tm-navbar-container">
+        <div class="row">
+          <div class="col-xl-12">
+            <nav class="navbar navbar-expand-sm">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a href="/" class="nav-link tm-nav-link tm-text-white active">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="public_login" class="nav-link tm-nav-link tm-text-white">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="customer_register" class="nav-link tm-nav-link tm-text-white">New Customer</a>
+                </li>
+              </ul>
+            </nav>
+
+<form method="post">
+	<center>
+		<h1><b>LOGIN</b></h1>
+		<table class="table" style="width: 500px;">
+			<tr>
+				<th>Username</th>
+				<td><input type="text"  name="uname" class="form-control"></td>
+			</tr><br>
+			<tr>
+				<th>Password</th>
+				<td><input type="password"   name="pword" class="form-control"></td>
+			</tr><br>
+			
+      <tr>
+        <td align="center" colspan="2"><input type="submit" value="login" name="submit" class="btn btn-danger"></td>
+        <td><a href="forgotpassword">Forgot</a></td>
+      </tr>
+		</table>
+	</center>
+</form>
+   </div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

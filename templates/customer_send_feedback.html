@@ -1,0 +1,46 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form method="post">
+		<center>
+			<h2>FEEDBACK</h2>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Feedback</th>
+					<td><input type="text" name="feed"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="submit" value="SEND"></td>
+				</tr>
+			</table>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Feedback</th>
+					<th>Date</th>
+				</tr>
+
+				{% for row in data['fbk'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['feedback'] }}</td>
+					<td>{{ row['date'] }}</td>
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		</center>
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

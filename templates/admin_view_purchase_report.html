@@ -1,0 +1,93 @@
+{% include 'admin_header.html' %}
+{% include 'temp_header.html' %}
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+
+
+		
+		
+
+	{% if data['purchase'] %}
+<center>	<h1>Purchase Report</h1></center>
+	<center>
+		<table class="table" border="1" style="width: 700px;color: #fff">
+			<tr>
+				<th>Vendor Name</th>
+		        <th>Item</th>
+		        <th>Quantity</th>
+		        <th>Total</th>
+		        <th>Date</th>
+		        
+			</tr>
+
+			{% for row in data['purchase'] %}
+
+			<tr>
+				<td>{{row['company_name']}}</td>
+		        <td>{{row['product']}}</td>
+		        <td>{{row['quantity']}}</td>
+		        <td>{{row['pamount']}}</td>
+		        <td>{{row['date']}}</td>
+			</tr>
+
+			{% endfor %}
+	
+		</table>
+	
+		<td><a href="admin_purchase_print">Report</a></td>
+		</center>
+
+
+		{% else %}
+		<form method="post">
+<center>
+	
+	<br><br>
+	<h1>Purchase Report</h1>
+	<table class="table" style="width: 600px;color: #fff">
+		<tr>
+			<th>From date</th>
+			<td><input type="date" name="fdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<th>To date</th>
+			<td><input type="date" name="tdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" value="search" name="submit" class="btn btn-danger"></td>
+		</tr>
+	</table>
+</center>
+</form>
+	{% endif %}
+
+</div>
+        </div>
+      </div>
+
+      <!-- <div id="div_print" > 
+		<input type="button" value="click to print" onclick="printDiv()"> 
+        </div> -->
+	
+          
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% include 'footer.html' %}

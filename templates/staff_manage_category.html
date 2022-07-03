@@ -1,0 +1,48 @@
+{% include 'staff_header.html' %}
+
+	<form method="post">
+		<center>
+			<h2 style="padding-top: 200px;">MANAGE CATEGORY</h2>
+			<table class="table" style="width: 600px;color:white">
+				<tr>
+					<th>Category</th>
+					<td><input type="text" name="cat" class="form-control"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+				</tr>
+			</table>
+			<br>
+			<h2>CATEGORIES</h2>
+			<table class="table" style="width: 700px;color:white">
+				<tr>
+					<th>Sl.no</th>
+					<th>Category</th>
+				</tr>
+				{% for row in data['cat'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['category']}}</td>
+					{% if row['c_status']=='active' %}
+						<td><a class="btn btn-warning btn-sm" href="staff_manage_subcategory?ids={{row['category_id']}}">Sub Category</a></td>
+					{% endif %}
+					{% if row['c_status']=='active' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids={{row['category_id']}}">Inactive</a></td>
+					{% elif row['c_status']=='inactive' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=active&ids={{row['category_id']}}">Active</a></td>
+					{% endif %}	
+				</tr>
+				{% endfor %}
+			</table>
+		</center>
+	</form>
+	</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

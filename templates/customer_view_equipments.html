@@ -1,0 +1,43 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form>
+		<center>
+			<h1>Equipments</h1>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					
+					<th>Product</th>
+					<th>Amount</th>
+					<th>Photo</th>
+					<th></th>
+				</tr>
+
+				{% for row in data['equip'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					
+					<td>{{ row['product'] }}</td>
+					<td>{{ row['amount'] }}</td>
+					<td><a href="/{{row['image']}}"><img width="80" height="50" src="/{{row['image']}}"></a></td>
+					<td><a class="btn btn-success" href="customer_view_equipment_details?ids={{ row['item_id'] }}">View</a></td>
+				</tr>
+
+				{% endfor %}
+
+		</table>
+		</center>
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

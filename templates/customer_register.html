@@ -1,0 +1,83 @@
+{% include 'public_header.html' %}
+
+<div class="tm-main">
+
+    <div class="tm-welcome-section-u" >
+      <div class="container tm-navbar-container">
+        <div class="row">
+          <div class="col-xl-12">
+            <nav class="navbar navbar-expand-sm">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a href="/" class="nav-link tm-nav-link tm-text-white active">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="public_login" class="nav-link tm-nav-link tm-text-white">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="customer_register" class="nav-link tm-nav-link tm-text-white">New Customer</a>
+                </li>
+              </ul>
+            </nav>
+       
+	<form method="post">
+		<center>
+			<h1>CUSTOMER REGISTRATION</h1>
+		<table class="table" style="max-height: 50px; max-width: 500px;">
+			<tr>
+				<th>First name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="fname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Last name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="lname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" pattern="[0-9]{10}" title="enter valid phone" required name="phone" class="form-control"></td>
+			</tr>
+			
+			<tr>
+				<th>House Name</th>
+				<td><input type="text" required name="hname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" required name="place" pattern="[a-zA-Z\s]{0,50}" title="enter valid place" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>District</th>
+				<td><input type="text" required name="district" pattern="[a-zA-Z\s]{0,50}" title="enter valid district" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" required name="pin" pattern="[0-9]{6}" title="enter valid pincode" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" required name="email" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="password"  required name="pword" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="register" name="submit" class="btn btn-danger"></td>
+			</tr>
+		</table>
+
+		</center>
+	</form>
+	   </div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+    <br><br><br><br><br>
+{% include 'footer.html' %}

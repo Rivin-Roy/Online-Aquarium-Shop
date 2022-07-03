@@ -1,0 +1,89 @@
+{% include 'admin_header.html' %}
+{% include 'temp_header.html' %}
+
+
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+
+
+
+<form method="post">
+<center>
+	<h1 style="padding-top: 10px;">STAFF REPORT</h1>
+	<br><br>
+	<table class="table" style="width: 600px;color: #fff">
+		<tr>
+			<th>From date</th>
+			<td><input type="date" name="fdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<th>To date</th>
+			<td><input type="date" name="tdate" class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" value="search" name="submit" class="btn btn-danger"></td>
+		</tr>
+	</table>
+
+		
+			
+
+	<h1>STAFF LIST</h1>
+	<table class="table" style="width: 500px;color: black">
+		<tr>
+			<th>Sno</th>
+			<th>first name</th>
+			<th>last name</th>
+			<th>phone</th>
+			<th>email</th>
+			<th>house</th>
+			<th>city</th>
+			<th>state</th>
+			
+			<th>DOJ</th>
+			
+		</tr>
+		{% for row in data['staff'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['last_name'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+			<td>{{ row['house'] }}</td>
+			<td>{{ row['city'] }}</td>
+			<td>{{ row['state'] }}</td>
+			
+			<td>{{ row['doj'] }}</td>
+			
+		</tr>
+
+		{% endfor %}
+		
+	</table>
+	<td><a href="admin_staff_print" class="btn-danger">Report</a></td>
+	<br><br><br>
+	</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+	
+	
+	
+</center>
+</form>
+
+{% include 'footer.html' %}

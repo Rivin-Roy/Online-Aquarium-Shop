@@ -1,0 +1,105 @@
+{% include 'admin_header.html' %}
+
+<center>
+    
+        
+<script type="text/javascript">
+        function TestOnTextChange()
+        {
+            var a=document.getElementById("amount").value;
+            var b=document.getElementById("quantity").value;
+
+            var s=parseInt(a)*parseInt(b)
+
+            document.getElementById("total").value=s;
+        }
+        function myfun()
+        {
+            // alert("hello")
+            var a=document.getElementById("amount").value;
+            
+
+            var s=(10 * parseInt(a))/100;
+
+            document.getElementById("sp").value=parseInt(a)+parseInt(s);
+        }
+    </script>
+<form method="post">
+        <h1 style="font-size: 50px;margin-top: -5em;padding-top: 300px;"><b>Purchase</b></h1>
+	<table class="table" style="font-size: 30px;width: 600px;color: #fff">
+        
+        
+        <tr>
+            <th>Cost Price</th>
+            <td><input type="text" name="amount" id="amount" onchange="myfun()" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Selling Price</th>
+            <td><input type="text" name="sp" id="sp" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td><input type="text" name="quantity"  onchange="TestOnTextChange()"  id="quantity" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td><input type="text" name="total" id="total" class="form-control"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" name="purchase" value="PURCHASE" class="btn btn-primary"></td>
+        </tr>
+    </table>
+    </form>
+</center>
+   </div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>                             
+
+<h1 style="font-size: 50px;color: black;">Purchase</h1>
+<table class="table" style="color: black">
+    <tr>
+        <th>Vendor Name</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+    {% for row in data['purchase'] %}
+    <tr>
+        <td>{{row['company_name']}}</td>
+        <td>{{row['product']}}</td>
+        <td>{{row['quantity']}}</td>
+        <td>{{row['pamount']}}</td>
+        <td>{{row['date']}}</td>
+        <th>{{row['status']}}</th>
+        {% if row['status']=="pending" %}
+            <td><a href="?action=active&pid={{row['pmaster_id']}}&vid={{data['vid']}}&item_id={{data['item_id']}}" class="btn btn-success">Active</a></td>
+            <td><a href="?action=inactive&pid={{row['pmaster_id']}}&vid={{data['vid']}}&item_id={{data['item_id']}}" class="btn btn-info">Inactive</a></td>
+        {% elif row['status']=="active" %}
+            <td><a href="?action=inactive&pid={{row['pmaster_id']}}&vid={{data['vid']}}&item_id={{data['item_id']}}" class="btn btn-info">Inactive</a></td>
+        {% elif row['status']=="inactive" %}
+            <td><a href="?action=active&pid={{row['pmaster_id']}}&vid={{data['vid']}}&item_id={{data['item_id']}}" class="btn btn-success">Active</a></td>    
+        {% endif %}    
+    {% endfor %}
+</table>
+    </center>
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% include 'footer.html' %}

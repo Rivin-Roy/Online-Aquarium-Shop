@@ -1,0 +1,91 @@
+{% include'customer_header.html' %}	<div class="banner">
+		<div  >
+
+            <!-- Wrapper-for-Slides -->
+        <style type="text/css">
+        	body
+        	{
+        		background-image: url(/static/images/banner.jpg);
+        	}
+        	table
+        	{
+        		background-color: black;
+        		opacity: 0.5;
+        		width: 700px
+        		
+        	}
+        	th,td,h1
+        	{
+        		color: white;
+        	}
+            input
+            {
+                color: black;
+            }
+        </style>
+
+	
+<center>
+	<style type="text/css">
+td{background-color: transparent;font-weight: 2px;color: black}
+hr{border-color: orange}
+#b {
+	border: 1px solid grey; 
+	padding: 10px;
+}
+
+</style>
+<br>
+<div align="center"> 
+	<form method="post">
+		<h2> Payment </h2><br>
+		<table style="width: 400px; border-radius: 5px;" class="table table-borderless" id="b"> 
+			<tr> 
+				<td style="color: white">PAYMENT DETAILS</td> 
+				<td colspan="2" align="right"><img src="/static/credit_card.png" style="width:70%"></td>
+			</tr>
+			<tr> 
+				<td colspan="2"> <small style="color: white">CARD NUMBER</small><br> 
+					<input type="text" placeholder="Enter a valid card number"  class="form-control" required pattern="[0-9]{16}" title="Enter 16 digit Card number">
+
+				</td> 
+			</tr>
+			<tr> 
+				<td > <small style="color: white">CVV</small><br> 
+					<input type="text" placeholder="CVV"  class="form-control" required pattern="[0-9]{3}" title="Enter 3 digit CV number">
+				</td> 
+				<td> <small style="color: white">EXPIRATION DATE</small><br> 
+					<input type="text" placeholder="MM/YY"  class="form-control" required pattern="[0-9,/]{5}" title="Enter month and year"> 
+				</td>
+			</tr>
+			<tr> 
+				<td colspan="2"> <small style="color: white">CARD HOLDER</small><br> 
+					<input type="text" placeholder="Name on card"  class="form-control" data-valid='only-text' required > 
+				</td>
+			</tr>
+			<tr> 
+				<td colspan="2" >
+					<h6 style="color: white">Amount : {{data['view'][0]['total']}}</h6>
+				</td>
+			</tr>
+			<tr> 
+				<td colspan="2"> 
+					<input type="submit" value="PAY"  class="btn btn-success" style="width: 100%" name="pay">
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

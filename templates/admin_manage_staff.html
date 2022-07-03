@@ -1,0 +1,186 @@
+{% include 'admin_header.html' %}
+<form method="post">
+	<center>
+
+		{% if data['upstaff'] %}
+
+		<h1>UPDATE STAFF DETAILS</h1>
+		<table class="table"  style="width: 700px;color: #fff">
+			<tr>
+				<th>First name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" value="{{ data['upstaff'][0]['first_name'] }}" required name="fname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Last name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" value="{{ data['upstaff'][0]['last_name'] }}" required name="lname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" pattern="[0-9]{10}" title="enter valid phone" value="{{ data['upstaff'][0]['phone'] }}" required name="phone" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" value="{{ data['upstaff'][0]['email'] }}" required name="email" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>House Name</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['house'] }}" required name="hname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>City</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['city'] }}" required name="city" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>State</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['state'] }}" required name="state" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['pin'] }}" required name="pin" class="form-control"></td>
+			</tr>
+			<!-- <tr>
+				<th>Qualification</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['qualification'] }}" required name="quali" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Designation</th>
+				<td><input type="text" value="{{ data['upstaff'][0]['designation'] }}" required name="designation" class="form-control"></td>
+			</tr> -->
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="update" name="submits" class="btn btn-warning"></td>
+			</tr>
+		</table>
+
+
+		{% else %}
+
+
+		<h1>STAFF REGISTRATION</h1>
+		<table class="table"  style="width: 700px;color: #fff">
+			<tr>
+				<th>First name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="fname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Last name</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid name" required name="lname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" pattern="[0-9]{10}" title="enter valid phone" required name="phone" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" required name="email" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>House Name</th>
+				<td><input type="text" required name="hname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>City</th>
+				<td><input type="text" required name="city" pattern="[a-zA-Z\s]{0,50}" title="enter valid city" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>State</th>
+				<td><input type="text" required name="state" pattern="[a-zA-Z\s]{0,50}" title="enter valid state" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" required name="pin" pattern="[0-9]{6}" title="enter valid pincode" class="form-control"></td>
+			</tr>
+			<!-- <tr>
+				<th>Qualification</th>
+				<td><input type="text" required name="quali" class="form-control"></td>
+			</tr>
+		
+			<tr>
+				<th>Designation</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid designation" required name="designation" class="form-control"></td>
+			</tr> -->
+			<tr>
+				<th>Password</th>
+				<td><input type="password"  required name="pword" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="register" name="submit" class="btn btn-warning"></td>
+			</tr>
+		</table>
+
+
+		{% endif %}
+</form>
+
+
+		</center>
+   </div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>   
+
+    
+		<h1>STAFF'S</h1>
+		<table class="table" style="color: black;min-width: 10px;">
+			<tr>
+				<!-- <th>Sno</th> -->
+				<th>First name</th>
+				<!-- <th>Last name</th> -->
+				<th>Phone</th>
+				<th>Email</th>
+				<th>House</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Pincode</th>
+				<!-- <th>Qualification</th> -->
+				<th>DOJ</th>
+				<!-- <th>Designation</th> -->
+				<!-- <th>Status</th> -->
+			</tr>
+
+			{% for row in data['staff'] %}
+
+			<tr>
+				<!-- <td>{{ loop.index }}</td> -->
+				<td>{{ row['first_name'] }}</td>
+				<!-- <td>{{ row['last_name'] }}</td> -->
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+				<td>{{ row['house'] }}</td>
+				<td>{{ row['city'] }}</td>
+				<td>{{ row['state'] }}</td>
+				<td>{{ row['pin'] }}</td>
+				<!-- <td>{{ row['qualification'] }}</td> -->
+				<td>{{ row['doj'] }}</td>
+				<!-- <td>{{ row['designation'] }}</td> -->
+				<!-- <td>{{ row['s_status'] }}</td> -->
+				<td><a class="btn btn-danger btn-sm" href="?action=update&ids={{ row['username'] }}">Update</a></td>
+				{% if row['s_status']=='active' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids={{ row['username'] }}">Inactive</a></td>
+				{% elif row['s_status']=='inactive' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=active&ids={{ row['username'] }}">Active</a></td>
+				{% endif %}	
+				
+			</tr>
+
+			{% endfor %}
+
+		</table>
+    </center>
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% include 'footer.html' %}

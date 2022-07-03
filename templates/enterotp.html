@@ -1,0 +1,77 @@
+{% include 'public_header.html' %}
+
+<div class="tm-main">
+
+    <div class="tm-welcome-section" >
+      <div class="container tm-navbar-container">
+        <div class="row">
+          <div class="col-xl-12">
+            <nav class="navbar navbar-expand-sm">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a href="/" class="nav-link tm-nav-link tm-text-white active">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="public_login" class="nav-link tm-nav-link tm-text-white">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="customer_register" class="nav-link tm-nav-link tm-text-white">New Customer</a>
+                </li>
+              </ul>
+            </nav>
+		<center>
+			
+			<form method="post">
+			{% if data['chp'] %}
+
+			<h2>Change Password</h2>
+			<table class="table" style="width: 500px;color: white;">
+				<tr>
+					<th>Username</th>
+					<td><input type="text" readonly="" value="{{data['chp']}}" class="form-control" name="uname"></td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td><input type="password" required="" class="form-control" name="pwd"></td>
+				</tr>
+				<tr>
+					<th>Confirm Password</th>
+					<td><input type="password" required="" class="form-control" name="pwds"></td>
+				</tr>
+				<tr>	
+					<td align="center" colspan="2"><input type="submit" name="update" value="Submit" class="btn btn-danger"></td>
+				</tr>
+			</table>
+{%else%}
+
+			<h2>OTP</h2>
+			<table class="table" style="width: 500px;color: white;">
+				<tr>
+					<th>OTP</th>
+					<td style="color: white"><input type="text" name="otp"  class="form-control" ></td>
+				</tr>
+				<tr>
+					
+					<td align="center" colspan="2"><input type="submit" name="submit" value="Submit" class="btn btn-danger"></td>
+
+				</tr>
+			</table>
+		</center>
+	
+			{%endif%}	
+</form>				
+							
+						
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+								
+								
+					
+
+	
+{% include'footer.html' %}

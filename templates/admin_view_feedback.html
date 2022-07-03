@@ -1,0 +1,38 @@
+{% include 'admin_header.html' %}
+{% include 'temp_header.html' %}
+
+<center>
+	<h1>FEEDBACK</h1>
+		<table class="table" style="width: 700px;color: #fff">
+			<tr>
+				<th>Sno</th>
+				<th>Customer</th>
+				<th>Total</th>
+				<th>Date</th>
+			</tr>
+
+			{% for row in data['feedback'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['customer_name'] }}</td>
+				<td>{{ row['feedback'] }}</td>
+				<td>{{ row['date'] }}</td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

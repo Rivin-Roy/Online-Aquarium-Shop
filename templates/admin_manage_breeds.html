@@ -1,0 +1,103 @@
+{% include 'admin_header.html' %}
+
+<form method="post">
+	<center>
+
+		{% if data['upbreed'] %}
+
+
+
+				<h1>UPDATE BREEDS</h1>
+		<table class="table" style="width: 600px;color: #fff"> 
+			<tr>
+				<th>Subcategory</th>
+				<td><select name="subcat" class="form-control" style="width: 500px;height: 50px">
+					
+				
+					{% for row in data['sub'] %}
+						{% if data['upbreed'][0]['subcategory_id'] |int==row['subcategory_id'] |int %}
+							<option value="{{row['subcategory_id']}}" selected>{{row['subcategory']}}</option>
+						{% else %}
+							<option value="{{row['subcategory_id']}}">{{row['subcategory']}}</option>
+					
+						{% endif %}
+					{% endfor %}
+					
+				</select></td>
+				<!-- <td><input type="text" value="{{ data['upbreed'][0]['subcategory'] }}" pattern="[a-zA-Z\s]{0,50}" title="enter valid breed" required class="form-control"></td> -->
+			</tr>
+			<tr>
+				<th>Breed</th>
+				<td><input type="text" value="{{ data['upbreed'][0]['breed'] }}" pattern="[a-zA-Z\s]{0,50}" title="enter valid breed" required name="breed" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="update" name="submits" class="btn btn-success"></td>
+			</tr> 
+		</table>
+
+
+		{% else %}
+
+<br><br><br>
+		<h1>ADD BREED</h1>
+		<table class="table" style="width: 600px;color: #fff"> 
+			<tr>
+				<th>Subcategory</th>
+				<td><select name="subcat" class="form-control" style="width: 500px;height: 50px">
+					<option>Select</option>
+					{% for row in data['sub'] %}
+					<option value="{{row['subcategory_id']}}">{{row['subcategory']}}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Breed</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid breed" required name="breed" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="add" name="submit" class="btn btn-success"></td>
+			</tr> 
+		</table>
+
+		{% endif %}
+
+
+		<br><br>
+		<h1>BREEDS</h1>
+		<table class="table" style="width: 700px;color: #fff">
+			<tr>
+				<th>Sno</th>
+				<th>Subcategory</th>
+				<th>Breed</th>
+			</tr>
+
+			{% for row in data['breeds'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['subcategory'] }}</td>
+				<td>{{ row['breed'] }}</td>
+				<td><a href="?action=update&bid={{ row['breed_id'] }}" class="btn btn-info">Update</a></td>
+				{% if row['b_status']=='active' %}
+					<td><a href="?action=inactive&bid={{ row['breed_id'] }}" class="btn btn-danger">Inactive</a></td>
+				{% elif row['b_status']=='inactive' %}
+					<td><a href="?action=active&bid={{ row['breed_id'] }}" class="btn btn-danger">Active</a></td>
+				{% endif %}		
+			</tr>
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

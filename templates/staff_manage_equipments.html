@@ -1,0 +1,118 @@
+{% include 'staff_header.html' %}
+
+	<form method="post" enctype="multipart/form-data">
+	<center>
+
+		{% if data['upequip'] %}
+
+
+		<h1>UPDATE EQUIPMENTS</h1>
+		<table class="table" style="width: 600px;">
+			
+			
+			<tr>
+				<th>Product</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product name" required name="product" class="form-control" value="{{data['upequip'][0]['product']}}"></td>
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid quantity" required name="quantity" class="form-control" value="{{data['upequip'][0]['quantity']}}"></td>
+			</tr>
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid amount" required name="amount" class="form-control" value="{{data['upequip'][0]['amount']}}"></td>
+			</tr>
+			<tr>
+				<th>Photo</th>
+				<td><input type="file" title="Equipments image" name="image" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product description" required name="desc" class="form-control" value="{{data['upequip'][0]['description']}}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="UPDATE" name="submits" class="nbtn btn-danger"></td>
+			</tr>
+
+		{% else %}
+
+		<h1>MANAGE EQUIPMENTS</h1>
+		<table class="table" style="width: 700px;">
+			
+			
+			<tr>
+				<th>Product</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product name" required name="product" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid quantity" required name="quantity" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid amount" required name="amount" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Photo</th>
+				<td><input type="file" title="Equipments image" required="" name="image" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><input type="text" title="Equipments description" required="" name="desc" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="ADD" name="submit" class="nbtn btn-danger"></td>
+			</tr>
+		</table>
+
+		{%  endif %}
+		<br>
+		<h1>Equipments</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Sl.no</th>
+				<th>Subcategory</th>
+				<th>Vendor</th>
+				<th>Product</th>
+				<th>Quantity </th>
+				<th>Amount</th>
+				<th>Photo</th>
+				<th>Description</th><td></td><td></td>
+			</tr>
+
+			{% for row in data['equip'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['subcategory'] }}</td>
+				<td>{{ row['company_name'] }}</td>
+				<td>{{ row['product'] }}</td>
+				<td>{{ row['quantity'] }}</td>
+				<td>{{ row['amount'] }}</td>
+				<td><img width="80" height="50" src="/{{row['image']}}"></td>
+				<td>{{ row['description'] }}</td>
+				<td><a class="btn btn-danger btn-sm" href="?action=update&ids={{ row['item_id'] }}&sid={{data['sid']}}">Update</a></td>
+				{% if row['i_status']=='active' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids={{ row['item_id'] }}">Inactive</a></td>
+				{% elif row['i_status']=='inactive' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=active&ids={{ row['item_id'] }}">Active</a></td>
+				{% endif %}
+			</tr>
+
+			{% endfor %}
+
+		</table>
+
+	</center>
+
+</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

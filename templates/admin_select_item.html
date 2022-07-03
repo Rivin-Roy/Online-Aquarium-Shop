@@ -1,0 +1,42 @@
+{% include 'admin_header.html' %}
+<center>
+	<table class="table" style="width: 700px;color: #fff;">
+			<tr>
+				<th>Sl.no</th>
+				
+				<!-- <th>Vendor</th> -->
+				<th>Product</th>
+				<!-- <th>Quantity </th>
+				<th>Amount</th> -->
+				<th>Photo</th>
+				<th>Description</th><td></td><td></td>
+			</tr>
+
+			{% for row in data['items'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				
+				
+				<td>{{ row['product'] }}</td>
+				<!-- <td>{{ row['quantity'] }}</td>
+				<td>{{ row['amount'] }}</td> -->
+				<td>{{ row['description'] }}</td>
+				<td><a href="adminmanagepurchase?item_id={{row['item_id']}}&vid={{data['vid']}}" class="btn btn-info">Select</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

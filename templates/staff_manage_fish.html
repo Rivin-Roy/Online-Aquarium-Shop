@@ -1,0 +1,129 @@
+{% include 'staff_header.html' %}
+<form method="post" enctype="multipart/form-data">
+	<center>
+
+		{% if data['upfish'] %}
+
+
+		<h1>UPDATE FISH</h1>
+		<table class="table" style="width: 600px;">
+			
+			<!-- <tr>
+				<th>Vendor</th>
+				<td><select name="vendor" class="form-control">
+					<option value="{{data['upfish'][0]['vendor_id']}}">{{data['upfish'][0]['company_name']}}</option>
+					{% for row in data['vendor'] %}
+					<option value="{{row['vendor_id']}}">{{row['company_name']}} </option>
+					{% endfor %}
+				</select></td>
+			</tr> -->
+			<tr>
+				<th>Product</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product name" required name="product" class="form-control" value="{{data['upfish'][0]['product']}}"></td>
+			</tr>
+			<!-- <tr>
+				<th>Brand</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid quantity" required name="quantity" class="form-control" value="{{data['upfish'][0]['quantity']}}"></td>
+			</tr> -->
+			<!-- <tr>
+				<th>Amount</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid amount" required name="amount" class="form-control" value="{{data['upfish'][0]['amount']}}"></td>
+			</tr> -->
+			<tr>
+				<th>Photo</th>
+				<td><input type="file" name="image" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product description" required name="desc" class="form-control" value="{{data['upfish'][0]['description']}}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="UPDATE" name="submits" class="nbtn btn-danger"></td>
+			</tr>
+
+		{% else %}
+
+		<h1>MANAGE FISH</h1>
+		<table class="table" style="width: 700px;">
+			
+			<!-- <tr>
+				<th>Vendor</th>
+				<td><select name="vendor" class="form-control">
+					<option>select</option>
+					{% for row in data['vendor'] %}
+					<option value="{{row['vendor_id']}}">{{row['company_name']}} </option>
+					{% endfor %}
+				</select></td>
+			</tr> -->
+			<tr>
+				<th>Product</th>
+				<td><input type="text" pattern="[a-zA-Z\s]{0,50}" title="enter valid product name" required name="product" class="form-control"></td>
+			</tr>
+			/
+			<!-- <tr>
+				<th>Amount</th>
+				<td><input type="text" pattern="[0-9]{0,50}" title="enter valid amount" required name="amount" class="form-control"></td>
+			</tr> -->
+			<tr>
+				<th>Photo</th>
+				<td><input type="file" required name="image" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><input type="text" required name="desc" class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" value="ADD" name="submit" class="nbtn btn-danger"></td>
+			</tr>
+		</table>
+
+		{%  endif %}
+		<h1>FISHES</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Sl.no</th>
+				<th>Breed</th>
+				
+				<th>Product</th>
+				<!-- <th>Quantity </th>
+				<th>Amount</th> -->
+				<th>Photo</th>
+				<th>Description</th><td></td><td></td>
+			</tr>
+
+			{% for row in data['fish'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['breed'] }}</td>
+				<!-- <td>{{ row['company_name'] }}</td> -->
+				<td>{{ row['product'] }}</td>
+				<!-- <td>{{ row['quantity'] }}</td>
+				<td>{{ row['amount'] }}</td> -->
+				<td><img width="80" height="50" src="/{{row['image']}}"></td>
+				<td>{{ row['description'] }}</td>
+				<td><a class="btn btn-danger btn-sm" href="?action=update&ids={{ row['item_id'] }}&bid={{data['bid']}}">Update</a></td>
+				{% if row['i_status']=='active' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids={{ row['item_id'] }}">Inactive</a></td>
+				{% elif row['i_status']=='inactive' %}
+					<td><a class="btn btn-danger btn-sm" href="?action=active&ids={{ row['item_id'] }}">Active</a></td>
+				{% endif %}
+			</tr>
+
+			{% endfor %}
+
+		</table>
+
+	</center>
+
+</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

@@ -1,0 +1,40 @@
+      <footer class="row">
+        <div class="col-xl-12">
+          <!-- <p class="text-center p-4">Copyright &copy; <span class="tm-current-year">2018</span> Your Company Name 
+           -->
+          <!-- - Design: -->  <!-- <a rel="nofollow" href="https://www.tooplate.com" class="tm-text-gray">Tooplate</a></p> -->
+        </div>
+      </footer>
+    </div> <!-- .container -->
+
+  </div> <!-- .main -->
+
+  <!-- load JS -->
+  <script src="/static/js/jquery-3.2.1.slim.min.js"></script> <!-- https://jquery.com/ -->
+  <script>
+
+    /* DOM is ready
+    ------------------------------------------------*/
+    $(function () {
+
+      if (renderPage) {
+        $('body').addClass('loaded');
+      }
+
+      $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+    });
+
+  </script>
+</body>
+</html>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <script type="text/javascript">alert("{{message}}")</script>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}

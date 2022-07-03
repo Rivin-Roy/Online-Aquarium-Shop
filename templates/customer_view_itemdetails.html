@@ -1,0 +1,38 @@
+{% include'customer_header.html' %}
+{% include 'temp_header.html' %}
+	<form>
+		<center>
+			<h2>ITEM DETAILS</h2>
+			<table class="table" style="width: 700px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Breed</th>
+					<th>Amount</th>
+				</tr>
+
+				{% for row in data['idet'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['breed'] }}</td>
+					<td>{{ row['amount'] }}</td>
+				</tr>
+
+				{% endfor %}
+
+
+		</table>
+		
+		</center>
+	</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>{% include 'footer.html' %}

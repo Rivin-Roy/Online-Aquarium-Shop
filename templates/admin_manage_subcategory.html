@@ -1,0 +1,72 @@
+{% include 'admin_header.html' %}
+
+		<center>
+{% if data['update_view'] %}
+	<form method="post">
+		<br><br><br><br>
+			<h2>UPDATE SUBCATEGORY</h2>
+			<table class="table" style="width: 600px;color: #fff">
+				<tr>
+					<th>Subcategory Name</th>
+					<td><input type="text" name="sname" value="{{data['update_view'][0]['subcategory']}}" class="form-control" required=""></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="update_submit" value="Update Subcategory" class="btn btn-danger"></td>
+				</tr>
+			</table>
+	</form>
+{% else %}
+	<form method="post">
+		<br><br><br>
+			<h2>ADD SUBCATEGORY</h2>
+			<table class="table" style="width: 600px;color: #fff">
+				<tr>
+					<th>Subcategory Name</th>
+					<td><input type="text" name="sname" class="form-control"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+				</tr>
+			</table>
+	</form>
+	{% endif %}
+	{% if data['subcat'] %}
+			<br>
+			<h2>SUBCATEGORIES</h2>
+			<table class="table" style="width: 700px;color: #fff">
+				<tr>
+					<th>Sl.no</th>
+					<th>Subcategory</th>
+					<th>Category Name</th>
+					
+				</tr>
+				{% for row in data['subcat'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{ row['subcategory'] }}</td>
+					<td>{{ row['category'] }}</td>
+					
+					<td><a class="btn btn-success btn-sm" href="?action=update&ids1={{row['subcategory_id']}}&ids={{data['ids']}}">Update</a></td>
+					{% if row['sub_status']=='active' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids1={{row['subcategory_id']}}&ids={{data['ids']}}">Inactive</a></td>
+					{% elif row['sub_status'] =='inactive' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=active&ids1={{row['subcategory_id']}}&ids={{data['ids']}}">Active</a></td>
+					{% endif %}	
+					<!-- <td><a class="btn btn-danger btn-sm" href="?action=delete&ids1={{row['subcategory_id']}}&ids={{data['ids']}}">Delete</a></td> -->
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}
