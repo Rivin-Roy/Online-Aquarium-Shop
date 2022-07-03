@@ -1,0 +1,144 @@
+{% include 'staff_header.html' %}
+
+
+
+<form method="post">
+		<center>
+			{% if data['upvendor'] %}
+			<h2>UPDATE VENDORS</h2>
+			<table class="table" style="width: 600px;color: white;">
+				
+				
+				<tr>
+					<th>Company Name</th>
+					<td><input type="text" name="company_name" class="form-control" value="{{data['upvendor'][0]['company_name']}}"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><input type="text" name="email" class="form-control" value="{{data['upvendor'][0]['email']}}"></td>
+				</tr>
+				<tr>
+					<th>Phone</th>
+					<td><input type="text" name="phone" class="form-control" value="{{data['upvendor'][0]['phone']}}"></td>
+				</tr>
+				<tr>
+					<th>House Name</th>
+					<td><input type="text" name="hname" class="form-control" value="{{data['upvendor'][0]['house']}}"></td>
+				</tr>
+				<tr>
+					<th>Place</th>
+					<td><input type="text" name="place" class="form-control" value="{{data['upvendor'][0]['place']}}"></td>
+				</tr>
+				<tr>
+					<th>Pincode</th>
+					<td><input type="text" name="pin" class="form-control" value="{{data['upvendor'][0]['pincode']}}"></td>
+				</tr>
+				<tr>
+					<th>District</th>
+					<td><input type="text" name="dist" class="form-control" value="{{data['upvendor'][0]['district']}}"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="submits" value="UPDATE" class="btn btn-danger"></td>
+				</tr>
+
+			</table>
+
+
+			{% else %}
+			<h2>MANAGE VENDORS</h2>
+			<table class="table" style="width: 600px;color: white;">
+				
+				
+				<tr>
+					<th>Company Name</th>
+					<td><input type="text" name="company_name" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><input type="text" name="email" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Phone</th>
+					<td><input type="text" name="phone" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>House Name</th>
+					<td><input type="text" name="hname" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Place</th>
+					<td><input type="text" name="place" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>Pincode</th>
+					<td><input type="text" name="pin" class="form-control"></td>
+				</tr>
+				<tr>
+					<th>District</th>
+					<td><input type="text" name="dist" class="form-control"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+				</tr>
+
+			</table>
+			{% endif %}
+			</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+			<br>
+			<h2>VENDORS</h2>
+			<table class="table" style="width: 800px;">
+				<tr>
+					<th>Sl.no</th>
+					
+					
+					<th>Company Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>House Name</th>
+					<th>Place</th>
+					<th>Pincode</th>
+					<th>District</th>
+				</tr>
+				{% for row in data['vendor'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					
+					
+					<td>{{row['company_name']}}</td>
+					<td>{{row['email']}}</td>
+					<td>{{row['phone']}}</td>
+					<td>{{row['house']}}</td>
+					<td>{{row['place']}}</td>
+					<td>{{row['pincode']}}</td>
+					<td>{{row['district']}}</td>
+					<td><a class="btn btn-danger btn-sm" href="?action=update&ids={{row['vendor_id']}}">Update</a></td>
+					{% if row['v_status']=='active' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=inactive&ids={{row['vendor_id']}}">Inactive</a></td>
+					{% elif row['v_status']=='inactive' %}
+						<td><a class="btn btn-danger btn-sm" href="?action=active&ids={{row['vendor_id']}}">Active</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</table>
+		</center>
+	</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% include 'footer.html' %}

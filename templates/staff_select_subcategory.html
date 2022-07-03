@@ -1,0 +1,45 @@
+{% include 'staff_header.html' %}
+<center>
+	{% if data['subcat'] %}
+			<br>
+			<h2 style="padding-top: 150px;">SUBCATEGORIES</h2>
+			<table class="table" style="width: 700px;color: #fff">
+				<tr>
+					<th>Sl.no</th>
+					<th>Subcategory</th>
+					<th>Category Name</th>
+					
+				</tr>
+				{% for row in data['subcat'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{ row['subcategory'] }}</td>
+					<td>{{ row['category'] }}</td>
+					{% if data['subcat'][0].category_id == '1'  %}
+					<td><a href="admin_select_breed?subid={{row['subcategory_id']}}" class="btn btn-info">Select Breed</a></td>
+					{% else %}
+					<td><a href="admin_manage_equipments?subid={{row['subcategory_id']}}" class="btn btn-info">Add Equipment</a>
+					</td>
+					{% endif %}
+					<!-- <td><a href="staff_select_breed?id={{row['subcategory_id']}}" class="btn btn-info">Select Breed</a></td> -->
+					<!-- <td><a href="staff_select_vendor?id={{row['subcategory_id']}}" class="btn btn-info">Add Equipment</a></td> -->
+				</tr>	
+				{% endfor %}
+			</table>
+			{% endif %}
+</center>
+
+
+
+
+		
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

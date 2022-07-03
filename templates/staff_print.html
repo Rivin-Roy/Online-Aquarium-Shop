@@ -1,0 +1,87 @@
+{% include 'staff_header.html' %}
+{% include 'temp_header.html' %}
+
+<body onload="printDiv()">
+
+
+
+
+
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+<div style="color: #fff;">
+	<center>
+
+
+
+	 <div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+      <br>
+      <h5 class="navbar-brand brand float-md-start mb-0" style="text-align: right;margin-top: -30px;">
+
+      <img style="width:75px; height:50px;" src="/static/img/3.jpg">
+      <br>AQUA
+      </h5>
+    <p align="left" style="margin-top: -50px;"> <i class="fa fa-address-card" aria-hidden="true"></i> AQUA-iN, aqua-in Street,India. 
+                     <br><i class="fa fa-phone" aria-hidden="true"></i> +1 234 567 
+                  <br><i class="fa fa-envelope" aria-hidden="true"></i> aqua.in@gmail.com
+    </p>
+	<center><h2>CUSTOMER REPORT</h2></center>
+	<center>
+		<table class="table" border="1" width="1000px">
+			<tr>
+					<th>Sl.no</th>
+					<th>Breed</th>
+					<th>Brand</th>
+					<th>Type</th>
+					<th>Product</th>
+					<th>Selling Price</th>
+					<th>Photo</th>
+					<th>Description</th>
+					<th>Cost Price</th>
+				</tr>
+
+				{% for row in data['item'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['breed'] }}</td>
+					<td>{{ row['brand'] }}</td>
+					<td>{{ row['type'] }}</td>
+					<td>{{ row['product'] }}</td>
+					<td>{{ row['amount'] }}</td>
+					<td><a href="/{{row['image']}}"><img width="150" height="150" src="/{{row['image']}}"></a></td>
+					<td>{{ row['description'] }}</td>
+					<td>{{ row['cost_price'] }}</td>
+		</tr>
+			{% endfor%}
+			
+		</table>
+	</center>
+	</div>
+</div>
+<center>
+<div id="div_print" > 
+	<input type="button" value="click to print" class="btn btn-danger" onclick="printDiv()"> 
+</center>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+	
+	
+	
+</center>
+</form>
+
+{% include 'footer.html' %}

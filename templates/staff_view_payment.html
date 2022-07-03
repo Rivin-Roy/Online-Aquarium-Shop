@@ -1,0 +1,33 @@
+{% include 'staff_header.html' %}
+
+	<form>
+		<center>
+			<h2>PAYMENT</h2>
+			<table class="table" style="width: 600px;">
+				<tr>
+					<th>Sl.no</th>
+					<th>Customer Name</th>
+					<th>Amount</th>
+					<th>Date</th>
+				</tr>
+				{% for row in data['payment'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['customer_name']}}</td>
+					<td>{{row['amount']}}</td>
+					<td>{{row['pdate']}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</center>
+	</form>
+	</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

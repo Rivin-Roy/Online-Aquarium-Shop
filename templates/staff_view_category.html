@@ -1,0 +1,43 @@
+{% include 'staff_header.html' %}
+
+
+
+<center>
+	
+			<h2 style="padding-top: 150px;">Select category....</h2>
+			<table class="table" style="width: 700px;color: #fff">
+				<tr>
+					<th>Sl.no</th>
+					<th>Category</th>
+					<th>Status</th>
+
+				</tr>
+				{% for row in data['cat'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['category']}}</td>
+					<td>{{row['c_status']}}</td>
+					
+						<td><a class="btn btn-warning btn-sm" href="staff_select_subcategory?ids={{row['category_id']}}">Sub Category</a></td>
+						
+
+							
+				</tr>
+				{% endfor %}
+			</table>
+		</center>
+		
+
+
+
+		
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

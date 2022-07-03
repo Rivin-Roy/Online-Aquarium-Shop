@@ -1,0 +1,54 @@
+{% include 'staff_header.html' %}
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script>
+	<div id="div_print" > 
+<form>
+	<center>
+		<h2>CUSTOMER REPORT</h2>
+		<table class="table" style="width: 700px;color: #fff">
+			<tr>
+				<th>Sl.no</th>
+				<th>Customer name</th>
+				<th>Phone</th>
+				<th>House Name</th>
+				<th>Place</th>	
+				<th>District</th>
+				<th>Pincode</th>
+				<th>Email</th>
+			</tr>
+			{% for row in data['customer'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{ row['first_name'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['house'] }}</td>
+				<td>{{ row['place'] }}</td>
+				<td>{{ row['district'] }}</td>
+				<td>{{ row['pincode'] }}</td>
+				<td>{{ row['email'] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<td><a href="staff_customer_print">Report</a></td>
+		<!-- <input type="button" value="click to print" onclick="printDiv()" class="btn btn-danger">  -->
+	</center>
+</form>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+{% include 'footer.html' %}

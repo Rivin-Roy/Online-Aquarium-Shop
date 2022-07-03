@@ -1,0 +1,85 @@
+{% include 'staff_header.html' %}
+{% include 'temp_header.html' %}
+
+<body onload="printDiv()">
+
+
+
+
+
+<script> 
+		function printDiv() { 
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+<div style="color: #fff;">
+	<center>
+
+
+
+	 <div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+      <br>
+      <h5 class="navbar-brand brand float-md-start mb-0" style="text-align: right;margin-top: -30px;">
+
+      <img style="width:75px; height:50px;" src="/static/img/3.jpg">
+      <br>AQUA
+      </h5>
+    <p align="left" style="margin-top: -50px;"> <i class="fa fa-address-card" aria-hidden="true"></i> AQUA-iN, aqua-in Street,India. 
+                     <br><i class="fa fa-phone" aria-hidden="true"></i> +1 234 567 
+                  <br><i class="fa fa-envelope" aria-hidden="true"></i> aqua.in@gmail.com
+    </p>
+	<h1>PAYMENT LIST</h1>
+	<table class="table" style="width: 700px;color: #fff">
+		<tr>
+			<th>Sno</th>
+			<th>Customer name</th>
+			<th>Amount</th>
+			<th>Date</th>
+			
+		</tr>
+		{% for row in data['payment'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['amount'] }}</td>
+			<td>{{ row['date'] }}</td>
+			
+		</tr>
+
+		{% endfor %}
+	</table>
+
+		
+		<div id="div_print" > 
+			<input type="button" value="click to print" class="btn btn-danger" onclick="printDiv()"> 
+	
+	
+</form>
+	
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% include 'footer.html' %}

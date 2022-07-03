@@ -1,0 +1,33 @@
+{% include 'staff_header.html' %}
+
+<center>
+	   
+	<h1>FISH</h1>
+	<table>
+		<tr>
+			<th>Sno</th>
+			<th>Breed</th>
+			<th>Fish name</th>
+		</tr>
+
+		{% for row in data['fish'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['breed'] }}</td>
+			<td>{{ row['fish_name'] }}</td>
+		</tr>
+
+		{% endfor %}
+	</table>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}

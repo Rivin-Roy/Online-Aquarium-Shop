@@ -1,0 +1,33 @@
+{% include 'staff_header.html' %}
+<center>
+	<h1 style="padding-top: 150px;">Vendors</h1>
+		<table class="table" style="width: 700px;color: #fff">
+			<tr>
+				<th>Sno</th>
+				<th>Vendor</th>
+				
+			</tr>
+
+			{% for row in data['vendor'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['company_name'] }}</td>
+				
+				<!-- <td><a href="staff_manage_equipments?sid={{data['sid']}}&vid={{row['vendor_id']}}" class="btn btn-info">Add Equipment</a></td> -->
+				<td><a href="staff_select_item?vid={{row['vendor_id']}}" class="btn btn-info">Purchase</a></td>	
+			</tr>
+			{% endfor %}
+
+		</table>
+</center>
+</div>
+        </div>
+      </div>
+
+      
+          
+          
+        </div>
+      </div>
+{% include 'footer.html' %}
